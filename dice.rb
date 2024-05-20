@@ -27,8 +27,31 @@ get("/dice/2/6") {
 
   @outcome = "You rolled a #{first} and a #{second} for a total of #{sum}."
 
-  erb(:two_six, { :layout => :wrapper })
+  erb(:two_six)
 }
+
+# route 1/20
+get("/dice/1/20") {
+  @first = rand(1..20)
+  
+  @outcome = "You rolled a #{@first}."
+
+  erb(:one_twenty)
+}
+
+# route 100/6
+get("/dice/100/6") do
+  @rolls = []
+
+  100.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:one_hundred_six)
+end
+
 
 # routes for 1 dice
 def one_dice_routes(dice_side)
