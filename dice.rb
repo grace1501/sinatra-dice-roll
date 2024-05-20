@@ -19,6 +19,17 @@ get("/one/two") {
   "Two layers"
 }
 
+# route 2/6
+get("/dice/2/6") {
+  first = rand(1..6)
+  second = rand(1..6)
+  sum = first + second
+
+  @outcome = "You rolled a #{first} and a #{second} for a total of #{sum}."
+
+  erb(:two_six, { :layout => :wrapper })
+}
+
 # routes for 1 dice
 def one_dice_routes(dice_side)
   get("/dice/1/#{dice_side}") {
@@ -34,17 +45,17 @@ one_dice_routes(dice_side_one)
 
 # routes for 2 dices
 
-def two_dice_routes(dice_side)
-  get("/dice/2/#{dice_side}") {
-  num1 = rand(1..dice_side)
-  num2 = rand(1..dice_side)
-  sum = num1 + num2
-  result = "You rolled a #{num1} and a #{num2} for a total of #{sum}."
+# def two_dice_routes(dice_side)
+#   get("/dice/2/#{dice_side}") {
+#   num1 = rand(1..dice_side)
+#   num2 = rand(1..dice_side)
+#   sum = num1 + num2
+#   result = "You rolled a #{num1} and a #{num2} for a total of #{sum}."
 
-  return "<h1>2d#{dice_side}</h1>
-  <p>#{result}</p>"
-}
-end
+#   return "<h1>2d#{dice_side}</h1>
+#   <p>#{result}</p>"
+# }
+# end
 
-dice_side_two = 5
-two_dice_routes(dice_side_two)
+# dice_side_two = 6
+# two_dice_routes(dice_side_two)
