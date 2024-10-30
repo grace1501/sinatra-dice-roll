@@ -1,70 +1,75 @@
 require "sinatra"
-require "sinatra/reloader"
-require "better_errors"
-require "binding_of_caller"
 
-use(BetterErrors::Middleware)
-BetterErrors.application_root = __dir__
-BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
-
- get("/") {
-  erb(:elephant)
-}
-
-get("zebra") do
-  "Add a route"
+get("/") do
+  "Hello"
 end
 
-get("/one/two") {
-  "Two layers"
-}
+# require "sinatra/reloader"
+# require "better_errors"
+# require "binding_of_caller"
 
-# route 2/6
-get("/dice/2/6") {
-  first = rand(1..6)
-  second = rand(1..6)
-  sum = first + second
+# use(BetterErrors::Middleware)
+# BetterErrors.application_root = __dir__
+# BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
-  @outcome = "You rolled a #{first} and a #{second} for a total of #{sum}."
+#  get("/") {
+#   erb(:elephant)
+# }
 
-  erb(:two_six)
-}
+# get("zebra") do
+#   "Add a route"
+# end
 
-# route 1/20
-get("/dice/1/20") {
-  @first = rand(1..20)
+# get("/one/two") {
+#   "Two layers"
+# }
+
+# # route 2/6
+# get("/dice/2/6") {
+#   first = rand(1..6)
+#   second = rand(1..6)
+#   sum = first + second
+
+#   @outcome = "You rolled a #{first} and a #{second} for a total of #{sum}."
+
+#   erb(:two_six)
+# }
+
+# # route 1/20
+# get("/dice/1/20") {
+#   @first = rand(1..20)
   
-  @outcome = "You rolled a #{@first}."
+#   @outcome = "You rolled a #{@first}."
 
-  erb(:one_twenty)
-}
+#   erb(:one_twenty)
+# }
 
-# route 100/6
-get("/dice/100/6") do
-  @rolls = []
+# # route 100/6
+# get("/dice/100/6") do
+#   @rolls = []
 
-  100.times do
-    die = rand(1..6)
+#   100.times do
+#     die = rand(1..6)
 
-    @rolls.push(die)
-  end
+#     @rolls.push(die)
+#   end
 
-  erb(:one_hundred_six)
-end
+#   erb(:one_hundred_six)
+# end
 
 
-# routes for 1 dice
-def one_dice_routes(dice_side)
-  get("/dice/1/#{dice_side}") {
-    num = rand(1..dice_side)
-    return "<h1>1d#{dice_side}</h1>
-    <p>You rolled a #{num}.</p>"
+# # routes for 1 dice
+# def one_dice_routes(dice_side)
+#   get("/dice/1/#{dice_side}") {
+#     num = rand(1..dice_side)
+#     return "<h1>1d#{dice_side}</h1>
+#     <p>You rolled a #{num}.</p>"
 
-  }
-end
+#   }
+# end
 
-dice_side_one = 10
-one_dice_routes(dice_side_one)
+# dice_side_one = 10
+# one_dice_routes(dice_side_one)
 
 # routes for 2 dices
 
