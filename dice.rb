@@ -24,66 +24,66 @@ get("/one/two") {
   "Two layers"
 }
 
-# # route 2/6
-# get("/dice/2/6") {
-#   first = rand(1..6)
-#   second = rand(1..6)
-#   sum = first + second
+# route 2/6
+get("/dice/2/6") {
+  first = rand(1..6)
+  second = rand(1..6)
+  sum = first + second
 
-#   @outcome = "You rolled a #{first} and a #{second} for a total of #{sum}."
+  @outcome = "You rolled a #{first} and a #{second} for a total of #{sum}."
 
-#   erb(:two_six)
-# }
+  erb(:two_six)
+}
 
-# # route 1/20
-# get("/dice/1/20") {
-#   @first = rand(1..20)
+# route 1/20
+get("/dice/1/20") {
+  @first = rand(1..20)
   
-#   @outcome = "You rolled a #{@first}."
+  @outcome = "You rolled a #{@first}."
 
-#   erb(:one_twenty)
-# }
+  erb(:one_twenty)
+}
 
-# # route 100/6
-# get("/dice/100/6") do
-#   @rolls = []
+# route 100/6
+get("/dice/100/6") do
+  @rolls = []
 
-#   100.times do
-#     die = rand(1..6)
+  100.times do
+    die = rand(1..6)
 
-#     @rolls.push(die)
-#   end
+    @rolls.push(die)
+  end
 
-#   erb(:one_hundred_six)
-# end
+  erb(:one_hundred_six)
+end
 
 
-# # routes for 1 dice
-# def one_dice_routes(dice_side)
-#   get("/dice/1/#{dice_side}") {
-#     num = rand(1..dice_side)
-#     return "<h1>1d#{dice_side}</h1>
-#     <p>You rolled a #{num}.</p>"
+# routes for 1 dice
+def one_dice_routes(dice_side)
+  get("/dice/1/#{dice_side}") {
+    num = rand(1..dice_side)
+    return "<h1>1d#{dice_side}</h1>
+    <p>You rolled a #{num}.</p>"
 
-#   }
-# end
+  }
+end
 
-# dice_side_one = 10
-# one_dice_routes(dice_side_one)
+dice_side_one = 10
+one_dice_routes(dice_side_one)
 
-# routes for 2 dices
+routes for 2 dices
 
-# def two_dice_routes(dice_side)
-#   get("/dice/2/#{dice_side}") {
-#   num1 = rand(1..dice_side)
-#   num2 = rand(1..dice_side)
-#   sum = num1 + num2
-#   result = "You rolled a #{num1} and a #{num2} for a total of #{sum}."
+def two_dice_routes(dice_side)
+  get("/dice/2/#{dice_side}") {
+  num1 = rand(1..dice_side)
+  num2 = rand(1..dice_side)
+  sum = num1 + num2
+  result = "You rolled a #{num1} and a #{num2} for a total of #{sum}."
 
-#   return "<h1>2d#{dice_side}</h1>
-#   <p>#{result}</p>"
-# }
-# end
+  return "<h1>2d#{dice_side}</h1>
+  <p>#{result}</p>"
+}
+end
 
-# dice_side_two = 6
-# two_dice_routes(dice_side_two)
+dice_side_two = 6
+two_dice_routes(dice_side_two)
