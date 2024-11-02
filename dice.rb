@@ -1,10 +1,6 @@
 require "sinatra"
 
-get("/") do
-  "Hello"
-end
-
-# require "sinatra/reloader"
+require "sinatra/reloader"
 # require "better_errors"
 # require "binding_of_caller"
 
@@ -12,17 +8,21 @@ end
 # BetterErrors.application_root = __dir__
 # BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
+get("/") do
+  "Hello"
+end
+
 #  get("/") {
 #   erb(:elephant)
 # }
 
-# get("zebra") do
-#   "Add a route"
-# end
+get("/zebra") do
+  "Add a route"
+end
 
-# get("/one/two") {
-#   "Two layers"
-# }
+get("/one/two") {
+  "Two layers"
+}
 
 # # route 2/6
 # get("/dice/2/6") {
