@@ -1,12 +1,11 @@
 require "sinatra"
-
 require "sinatra/reloader"
-# require "better_errors"
-# require "binding_of_caller"
+require "better_errors"
+require "binding_of_caller"
 
-# use(BetterErrors::Middleware)
-# BetterErrors.application_root = __dir__
-# BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
+use(BetterErrors::Middleware)
+BetterErrors.application_root = __dir__
+BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
 get("/") do
   "Hello"
@@ -71,7 +70,7 @@ end
 dice_side_one = 10
 one_dice_routes(dice_side_one)
 
-routes for 2 dices
+# routes for 2 dices
 
 def two_dice_routes(dice_side)
   get("/dice/2/#{dice_side}") {
